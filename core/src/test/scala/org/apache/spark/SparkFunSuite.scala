@@ -53,15 +53,20 @@ abstract class SparkFunSuite
   extends FunSuite
   with BeforeAndAfterAll
   with ThreadAudit
+  with FileSystemAudit
   with Logging {
 // scalastyle:on
 
   protected val enableAutoThreadAudit = true
+  protected val enableAutoFileSystemAudit = true
 
   protected override def beforeAll(): Unit = {
     System.setProperty("spark.testing", "true")
     if (enableAutoThreadAudit) {
       doThreadPreAudit()
+    }
+    if (enableAutoFileSystemAudit) {
+      preFileSystemAudit()
     }
     super.beforeAll()
   }
@@ -74,6 +79,9 @@ abstract class SparkFunSuite
       super.afterAll()
       if (enableAutoThreadAudit) {
         doThreadPostAudit()
+      }
+      if (enableAutoFileSystemAudit) {
+        postFileSystemAudit()
       }
     }
   }
