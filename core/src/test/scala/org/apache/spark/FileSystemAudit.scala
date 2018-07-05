@@ -42,16 +42,16 @@ trait FileSystemAudit extends Logging {
     "/dev",
     "/proc",
     "/sys",
-    ".*/var.*",
-    ".*\\.oracle_jre_usage",
-    ".*/var/log.*",
-    ".*/var/db.*",
-    ".*/var/vm.*",
-    ".*/Library.*",
-    ".*/var/log.*",
-    "/Library/Logs.*",
-    ".*\\.ivy2",
-    ".*\\.kube"
+//    ".*/var.*",
+//    ".*\\.oracle_jre_usage",
+//    ".*/var/log.*",
+//    ".*/var/db.*",
+//    ".*/var/vm.*",
+//    ".*/Library.*",
+//    ".*/var/log.*",
+//    "/Library/Logs.*",
+    ".*\\.ivy2"
+//    ".*\\.kube"
   )
 
   lazy val regexes = ignoredRegex.map(r => r.r)
