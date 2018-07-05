@@ -50,7 +50,9 @@ trait FileSystemAudit extends Logging {
 //    ".*/Library.*",
 //    ".*/var/log.*",
 //    "/Library/Logs.*",
-    ".*\\.ivy2"
+    ".*\\.ivy2",
+    ".*sbt.*\\.log",
+    ".*hsperfdata.*"
 //    ".*\\.kube"
   )
 
