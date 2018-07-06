@@ -52,7 +52,9 @@ trait FileSystemAudit extends Logging {
 //    "/Library/Logs.*",
     ".*\\.ivy2",
     ".*sbt.*\\.log",
-    ".*hsperfdata.*"
+    ".*hsperfdata.*",
+    ".*\\.oracle_jre_usage.*",
+    ".*\\.c9.*"
 //    ".*\\.kube"
   )
 
@@ -127,8 +129,8 @@ trait FileSystemAudit extends Logging {
 
           files += fileString -> FileInfo(
             getFileSize(file),
-            attrs.creationTime().toMillis,
-            attrs.lastModifiedTime().toMillis,
+//            attrs.creationTime().toMillis,
+//            attrs.lastModifiedTime().toMillis,
             Files.getOwner(file).toString
           )
           FileVisitResult.CONTINUE
@@ -171,7 +173,7 @@ trait FileSystemAudit extends Logging {
 
 }
 
-case class FileInfo(size: Long, created: Long, modified: Long, owner: String)
+case class FileInfo(size: Long, owner: String)
 
 case class FileSystemSnapshot(files: Map[String, FileInfo])
 
